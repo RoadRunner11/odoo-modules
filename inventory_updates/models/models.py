@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# from odoo import models, fields, api
+from odoo import models, fields, api
 
 
 # class inventory_updates(models.Model):
@@ -16,3 +16,12 @@
 #     def _value_pc(self):
 #         for record in self:
 #             record.value2 = float(record.value) / 100
+
+
+class Certification(models.Model):
+    _name = 'inventory_updates.certifications'
+    _description = 'inventory certifications'
+
+    name = fields.Char('Name', required=True)
+    description = fields.Text('Description')
+    image = fields.Binary()

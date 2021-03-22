@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_inventory_updates_inventory_updates,inventory_updates.inventory_updates,model_inventory_updates_inventory_updates,base.group_user,1,1,1,1
+access_inventory_updates_certifications,inventory_updates.certifications,model_inventory_updates_certifications,base.group_user,1,1,1,1
