@@ -39,5 +39,5 @@ class ProductTemplate(models.Model):
     producer = fields.Char('Producer')
 
     def create_product_data(self):
-        _logger.debug("hello there")
+        _logger.info("hello there")
     
