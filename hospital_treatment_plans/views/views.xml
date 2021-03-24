@@ -42,7 +42,7 @@
 
     <!-- Top menu item -->
 
-    <menuitem name="Treatment Plans" id="hospital_treatment_plans.menu_root" action="hospital_treatment_plans.action_server"/>
+    <menuitem name="Treatment Plans" id="hospital_treatment_plans.menu_root" action="hospital_treatment_plans.action_window"/>
 
     <!-- menu categories -->
 
