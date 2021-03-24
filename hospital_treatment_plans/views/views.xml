@@ -45,16 +45,16 @@
     <menuitem name="Treatment Plans" id="hospital_treatment_plans.menu_root"/>
 
     <!-- menu categories -->
-<!--
+
     <menuitem name="Menu 1" id="hospital_treatment_plans.menu_1" parent="hospital_treatment_plans.menu_root"/>
-    <menuitem name="Menu 2" id="hospital_treatment_plans.menu_2" parent="hospital_treatment_plans.menu_root"/>
--->
+    <!-- <menuitem name="Menu 2" id="hospital_treatment_plans.menu_2" parent="hospital_treatment_plans.menu_root"/> -->
+
     <!-- actions -->
-<!--
+
     <menuitem name="List" id="hospital_treatment_plans.menu_1_list" parent="hospital_treatment_plans.menu_1"
               action="hospital_treatment_plans.action_window"/>
-    <menuitem name="Server to list" id="hospital_treatment_plans" parent="hospital_treatment_plans.menu_2"
-              action="hospital_treatment_plans.action_server"/>
--->
+    <!-- <menuitem name="Server to list" id="hospital_treatment_plans" parent="hospital_treatment_plans.menu_2"
+              action="hospital_treatment_plans.action_server"/> -->
+
   </data>
 </odoo>
