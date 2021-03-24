@@ -19,7 +19,8 @@ _logger = logging.getLogger(__name__)
 #     def _value_pc(self):
 #         for record in self:
 #             record.value2 = float(record.value) / 100
-
+def move_files():
+    pass
 
 class Certification(models.Model):
     _name = 'inventory_updates.certifications'
@@ -39,5 +40,8 @@ class ProductTemplate(models.Model):
     producer = fields.Char('Producer')
 
     def create_product_data(self):
-        _logger.info("hello there")
-    
+        text_file_path = get_module_resource('inventory_updates', 'static/src/', 'myfile.txt')
+        with open(text_file_path, 'r') as file_txt:
+            data = file_txt.read()
+
+        _logger.info(data)
