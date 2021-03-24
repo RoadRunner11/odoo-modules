@@ -1,10 +1,10 @@
 <odoo>
   <data>
     <!-- explicit list view definition -->
-<!--
+
     <record model="ir.ui.view" id="hospital_treatment_plans.list">
-      <field name="name">hospital_treatment_plans list</field>
-      <field name="model">hospital_treatment_plans.hospital_treatment_plans</field>
+      <field name="name">treatment plans </field>
+      <field name="model">hospital.treatment.plan</field>
       <field name="arch" type="xml">
         <tree>
           <field name="name"/>
@@ -13,16 +13,16 @@
         </tree>
       </field>
     </record>
--->
+
 
     <!-- actions opening views on models -->
-<!--
+
     <record model="ir.actions.act_window" id="hospital_treatment_plans.action_window">
-      <field name="name">hospital_treatment_plans window</field>
-      <field name="res_model">hospital_treatment_plans.hospital_treatment_plans</field>
+      <field name="name">treatment plans </field>
+      <field name="res_model">hospital.treatment.plan</field>
       <field name="view_mode">tree,form</field>
     </record>
--->
+
 
     <!-- server action to the one above -->
 <!--
@@ -41,9 +41,9 @@
 -->
 
     <!-- Top menu item -->
-<!--
-    <menuitem name="hospital_treatment_plans" id="hospital_treatment_plans.menu_root"/>
--->
+
+    <menuitem name="Treatment Plans" id="hospital_treatment_plans.menu_root"/>
+
     <!-- menu categories -->
 <!--
     <menuitem name="Menu 1" id="hospital_treatment_plans.menu_1" parent="hospital_treatment_plans.menu_root"/>
