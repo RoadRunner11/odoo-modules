@@ -72,7 +72,7 @@ class ProductTemplate(models.Model):
         module_path = get_module_resource('inventory_updates', 'static/src/')
         prisfil_path = module_path + 'prisfil.csv'
         varefil_path = module_path + 'varefil.csv'
-        with open(prisfil_path, 'r') as prisfil, , open(varefil_path, 'r') as varefil:
+        with open(prisfil_path, 'r') as prisfil, open(varefil_path, 'r') as varefil:
             prisfil_data = csv.reader(prisfil, escapechar= '\t')
             varefil_data = csv.reader(varefil)
             count = 0
