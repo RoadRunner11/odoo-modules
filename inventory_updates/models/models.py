@@ -28,13 +28,14 @@ def move_files():
     myUsername = "P4734998"
     myPassword = "54dLohN3"
     with pysftp.Connection(host=myHostname, username=myUsername, password=myPassword, cnopts=cnopts) as sftp:
-        path = get_module_resource('inventory_updates', 'static/src/')
+        # path = get_module_resource('inventory_updates', 'static/src/')
+        module_path = '/home/fodilu/odoo13/custom/addons/inventory_updates/static/src/'
         remoteFilePaths = ['Price/prisfil.csv', 'Price/varefil.csv']
 
         localFilePaths = ['prisfil.csv', 'varefil.csv']
-        for loc, path in enumerate(remoteFilePaths):
-            file_instance = sftp.open(path, 'r')
-            with open(path+localFilePaths[loc], 'wb') as out_file:
+        for loc, remote_path in enumerate(remoteFilePaths):
+            file_instance = sftp.open(remote_path, 'r')
+            with open(module_path + localFilePaths[loc], 'wb') as out_file:
                 shutil.copyfileobj(file_instance, out_file)
 
 class Certification(models.Model):
@@ -56,9 +57,9 @@ class ProductTemplate(models.Model):
 
     def create_product_data(self):
         move_files()
-        path = get_module_resource('inventory_updates', 'static/src/')
-        prisfil_path = path + 'prisfil.csv'
-        varefil_path = path + 'varefil.csv'
+        module_path = get_module_resource('inventory_updates', 'static/src/')
+        prisfil_path = module_path + 'prisfil.csv'
+        varefil_path = module_path + 'varefil.csv'
         with open(prisfil_path, 'r') as prisfil:
             prisfil_data = csv.reader(prisfil)
             for _ in range(5):
