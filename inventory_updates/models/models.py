@@ -5,6 +5,8 @@ from odoo.modules.module import get_module_resource
 import pysftp
 import logging
 import csv
+from gevent import monkey
+
 _logger = logging.getLogger(__name__)
 
 # class inventory_updates(models.Model):
@@ -21,6 +23,7 @@ _logger = logging.getLogger(__name__)
 #         for record in self:
 #             record.value2 = float(record.value) / 100
 def move_files():
+    monkey.patch_all()
     cnopts = pysftp.CnOpts()
     cnopts.hostkeys = None
 
