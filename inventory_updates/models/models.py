@@ -5,6 +5,7 @@ from odoo.modules.module import get_module_resource
 import pysftp
 import logging
 import csv
+import shutil
 from gevent import monkey
 
 _logger = logging.getLogger(__name__)
