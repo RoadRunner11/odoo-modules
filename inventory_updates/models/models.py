@@ -2,8 +2,9 @@
 
 from odoo import models, fields, api
 from odoo.modules.module import get_module_resource
+import pysftp
 import logging
-
+import csv
 _logger = logging.getLogger(__name__)
 
 # class inventory_updates(models.Model):
@@ -20,7 +21,21 @@ _logger = logging.getLogger(__name__)
 #         for record in self:
 #             record.value2 = float(record.value) / 100
 def move_files():
-    pass
+    cnopts = pysftp.CnOpts()
+    cnopts.hostkeys = None
+
+    myHostname = "sftpnordic.staples-solutions.com"
+    myUsername = "P4734998"
+    myPassword = "54dLohN3"
+    with pysftp.Connection(host=myHostname, username=myUsername, password=myPassword, cnopts=cnopts) as sftp:
+        path = get_module_resource('inventory_updates', 'static/src/')
+        remoteFilePaths = ['Price/prisfil.csv', 'Price/varefil.csv']
+
+        localFilePaths = ['prisfil.csv', 'varefil.csv']
+        for loc, path in enumerate(remoteFilePaths):
+            file_instance = sftp.open(path, 'r')
+            with open(path+localFilePaths[loc], 'wb') as out_file:
+                shutil.copyfileobj(file_instance, out_file)
 
 class Certification(models.Model):
     _name = 'inventory_updates.certifications'
@@ -40,8 +55,11 @@ class ProductTemplate(models.Model):
     producer = fields.Char('Producer')
 
     def create_product_data(self):
-        text_file_path = get_module_resource('inventory_updates', 'static/src/', 'myfile.txt')
-        with open(text_file_path, 'r') as file_txt:
-            data = file_txt.read()
-
-        _logger.info(data)
+        move_files()
+        path = get_module_resource('inventory_updates', 'static/src/')
+        prisfil_path = path + 'prisfil.csv'
+        varefil_path = path + 'varefil.csv'
+        with open(prisfil_path, 'r') as prisfil:
+            prisfil_data = csv.reader(prisfil)
+            for _ in range(5):
+                _logger.info(next(prisfil_data))
