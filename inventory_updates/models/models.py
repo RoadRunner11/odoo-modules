@@ -78,7 +78,11 @@ class ProductTemplate(models.Model):
             varefil_data = csv.reader(varefil)
             next(prisfil_data)
             next(varefil_data)
+            count1 = 0
+            count2 = 0
             for row in varefil_data:
+                if count1 >=20 :
+                    break
                 data = {}
                 row = ''.join(row).split(';')
                 data['internal_id'] = row[1]
@@ -97,6 +101,8 @@ class ProductTemplate(models.Model):
                     self.env['product.template'].create(data)
 
             for row in prisfil_data:
+                if count2 >=20 :
+                    break
                 internal_id = row[0][7:12]
                 duplicates = self.search([('internal_id', '=', internal_id)])
                 if duplicates:
