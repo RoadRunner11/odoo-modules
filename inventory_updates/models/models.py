@@ -69,31 +69,31 @@ class ProductTemplate(models.Model):
 
     def create_product_data(self):
         move_files()
-        # module_path = get_module_resource('inventory_updates', 'static/src/')
-        # prisfil_path = module_path + 'prisfil.csv'
-        # varefil_path = module_path + 'varefil.csv'
-        # with open(prisfil_path, 'r') as prisfil, open(varefil_path, 'r') as varefil:
-        #     prisfil_data = csv.reader(prisfil, escapechar= '\t')
-        #     varefil_data = csv.reader(varefil)
-        #     count = 0
-        #     for row in varefil_data:
-        #         if count >=10 :
-        #             break
-        #         data = {}
-        #         row = ''.join(row).split(';')
-        #         data['internal_id'] = row[1]
-        #         data['name'] = row[2]
-        #         data['producer'] = row[6]
-        #         data['barcode'] = row[9]
-        #         data['group1'] = row[14]
-        #         data['group2'] = row[15]
-        #         data['group3'] = row[16]
-        #         data['description'] = row[17]
-        #         duplicates == self.search([('internal_id', '=', data['internal_id'])])
-        #         if duplicates:
-        #             for product in duplicates:
-        #                 product.write(data)
-        #         else:
-        #             self.env['product.template'].create(data)
-        #         count += 1
-        # _logger.info('Done')
+        module_path = get_module_resource('inventory_updates', 'static/src/')
+        prisfil_path = module_path + 'prisfil.csv'
+        varefil_path = module_path + 'varefil.csv'
+        with open(prisfil_path, 'r') as prisfil, open(varefil_path, 'r') as varefil:
+            prisfil_data = csv.reader(prisfil, escapechar= '\t')
+            varefil_data = csv.reader(varefil)
+            count = 0
+            for row in varefil_data:
+                if count >=10 :
+                    break
+                data = {}
+                row = ''.join(row).split(';')
+                data['internal_id'] = row[1]
+                data['name'] = row[2]
+                data['producer'] = row[6]
+                data['barcode'] = row[9]
+                data['group1'] = row[14]
+                data['group2'] = row[15]
+                data['group3'] = row[16]
+                data['description'] = row[17]
+                duplicates == self.search([('internal_id', '=', data['internal_id'])])
+                if duplicates:
+                    for product in duplicates:
+                        product.write(data)
+                else:
+                    self.env['product.template'].create(data)
+                count += 1
+        _logger.info('Done')
