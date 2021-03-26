@@ -81,8 +81,8 @@ class ProductTemplate(models.Model):
             count1 = 0
             count2 = 0
             for row in varefil_data:
-                if count1 >=20 :
-                    break
+                # if count1 >=20 :
+                #     break
                 data = {}
                 row = ''.join(row).split(';')
                 data['internal_id'] = row[1]
@@ -102,14 +102,14 @@ class ProductTemplate(models.Model):
                 count1 += 1
 
             for row in prisfil_data:
-                if count2 >=20 :
-                    break
+                # if count2 >=20 :
+                #     break
                 internal_id = row[0][7:12]
                 duplicates = self.search([('internal_id', '=', internal_id)])
                 if duplicates:
                     for product in duplicates:
                         product.write({'price': float(row[1])})
 
-                count2 += 1
+                # count2 += 1
                 
         _logger.info('Done')
