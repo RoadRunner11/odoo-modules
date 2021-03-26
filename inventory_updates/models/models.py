@@ -89,7 +89,7 @@ class ProductTemplate(models.Model):
                 data['group2'] = row[15]
                 data['group3'] = row[16]
                 data['description'] = row[17]
-                duplicates == self.search([('internal_id', '=', data['internal_id'])])
+                duplicates = self.search([('internal_id', '=', data['internal_id'])])
                 if duplicates:
                     for product in duplicates:
                         product.write(data)
