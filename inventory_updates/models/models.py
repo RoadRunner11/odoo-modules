@@ -62,7 +62,7 @@ class ProductTemplate(models.Model):
         'inventory_updates.certifications', 'Certifications', help="Product certifications")
     internal_id = fields.Char('Internal ID')
     producer = fields.Char('Producer')
-    barcode = fields.Char('Barcode')
+    prod_type = fields.Char('Product Type')
     group1 = fields.Char('Group 1')
     group2 = fields.Char('Group 2')
     group3 = fields.Char('Group 3')
@@ -84,7 +84,7 @@ class ProductTemplate(models.Model):
                 data['internal_id'] = row[1]
                 data['name'] = row[2]
                 data['producer'] = row[6]
-                data['barcode'] = row[9]
+                data['prod_type'] = row[9]
                 data['group1'] = row[14]
                 data['group2'] = row[15]
                 data['group3'] = row[16]
