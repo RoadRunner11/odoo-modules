@@ -100,6 +100,6 @@ class ProductTemplate(models.Model):
                 duplicates = self.search([('internal_id', '=', internal_id)])
                 if duplicates:
                     for product in duplicates:
-                        product.write({'price': row[1]})
+                        product.write({'price': float(row[1])})
                 
         _logger.info('Done')
