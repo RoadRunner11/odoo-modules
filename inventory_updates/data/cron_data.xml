@@ -7,10 +7,12 @@
             <field name="model_id" ref="model_product_template"/>
             <field name="type">ir.actions.server</field>
             <field name="state">code</field>
-            <field name="code">model.create_product_data()</field>
+            <field name="code">model.create_product_data</field>
             <field name="interval_number">1</field>
             <field name="interval_type">days</field>
             <field name="numbercall">-1</field>
+            <field eval="False" name="doall"/>
+            <field name="priority">1000</field>
         </record>
 
         <record id="ir_cron_data_create_product_two" model="ir.cron">
@@ -18,10 +20,12 @@
             <field name="model_id" ref="model_product_template"/>
             <field name="type">ir.actions.server</field>
             <field name="state">code</field>
-            <field name="code">model.create_product_data()</field>
+            <field name="code">model.create_product_data</field>
             <field name="interval_number">1</field>
             <field name="interval_type">days</field>
             <field name="numbercall">-1</field>
+            <field eval="False" name="doall"/>
+            <field name="priority">1000</field>
         </record>
 
         <!-- Expired Soon -->
@@ -30,10 +34,12 @@
             <field name="model_id" ref="model_product_template"/>
             <field name="type">ir.actions.server</field>
             <field name="state">code</field>
-            <field name="code">model.create_product_data()</field>
+            <field name="code">model.create_product_data</field>
             <field name="interval_number">1</field>
             <field name="interval_type">days</field>
             <field name="numbercall">-1</field>
+            <field eval="False" name="doall"/>
+            <field name="priority">1000</field>
         </record>
     </data>
 </odoo>
