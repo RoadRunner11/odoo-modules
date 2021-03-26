@@ -99,6 +99,7 @@ class ProductTemplate(models.Model):
                         product.write(data)
                 else:
                     self.env['product.template'].create(data)
+                count1 += 1
 
             for row in prisfil_data:
                 if count2 >=20 :
@@ -108,5 +109,7 @@ class ProductTemplate(models.Model):
                 if duplicates:
                     for product in duplicates:
                         product.write({'price': float(row[1])})
+
+                count2 += 1
                 
         _logger.info('Done')
