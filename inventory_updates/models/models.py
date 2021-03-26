@@ -80,27 +80,27 @@ class ProductTemplate(models.Model):
             next(varefil_data)
             for row in varefil_data:
                 data = {}
-                # row = ''.join(row).split(';')
-                # data['internal_id'] = row[1]
-                # data['name'] = row[2]
-                # data['producer'] = row[6]
-                # data['prod_type'] = row[9]
-                # data['group1'] = row[14]
-                # data['group2'] = row[15]
-                # data['group3'] = row[16]
-                # data['description'] = row[17]
-                # duplicates = self.search([('internal_id', '=', data['internal_id'])])
-                # if duplicates:
-                #     for product in duplicates:
-                #         product.write(data)
-                # else:
-                #     self.env['product.template'].create(data)
+                row = ''.join(row).split(';')
+                data['internal_id'] = row[1]
+                data['name'] = row[2]
+                data['producer'] = row[6]
+                data['prod_type'] = row[9]
+                data['group1'] = row[14]
+                data['group2'] = row[15]
+                data['group3'] = row[16]
+                data['description'] = row[17]
+                duplicates = self.search([('internal_id', '=', data['internal_id'])])
+                if duplicates:
+                    for product in duplicates:
+                        product.write(data)
+                else:
+                    self.env['product.template'].create(data)
 
             for row in prisfil_data:
                 internal_id = row[0][7:12]
-                # duplicates = self.search([('internal_id', '=', internal_id)])
-                # if duplicates:
-                #     for product in duplicates:
-                #         product.write({'price': float(row[1])})
+                duplicates = self.search([('internal_id', '=', internal_id)])
+                if duplicates:
+                    for product in duplicates:
+                        product.write({'price': float(row[1])})
                 
         _logger.info('Done')
