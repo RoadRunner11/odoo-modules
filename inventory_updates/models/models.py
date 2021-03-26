@@ -75,10 +75,9 @@ class ProductTemplate(models.Model):
         with open(prisfil_path, 'r') as prisfil, open(varefil_path, 'r') as varefil:
             prisfil_data = csv.reader(prisfil, escapechar= '\t')
             varefil_data = csv.reader(varefil)
-            count = 0
+            next(prisfil_data)
+            next(varefil_data)
             for row in varefil_data:
-                if count >=10 :
-                    break
                 data = {}
                 row = ''.join(row).split(';')
                 data['internal_id'] = row[1]
@@ -95,5 +94,12 @@ class ProductTemplate(models.Model):
                         product.write(data)
                 else:
                     self.env['product.template'].create(data)
-                count += 1
+
+            for row in prisfil_data:
+                internal_id = row[0][7:12]
+                duplicates = self.search([('internal_id', '=', internal_id)])
+                if duplicates:
+                    for product in duplicates:
+                        product.write({'price': row[1]})
+                
         _logger.info('Done')
