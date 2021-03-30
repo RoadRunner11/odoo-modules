@@ -99,7 +99,7 @@ class ProductTemplate(models.Model):
                         product.write(data)
                 else:
                     self.env['product.template'].create(data)
-                count1 += 1
+                # count1 += 1
 
             for row in prisfil_data:
                 # if count2 >=20 :
