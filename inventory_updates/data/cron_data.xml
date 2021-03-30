@@ -7,7 +7,7 @@
             <field name="model_id" ref="model_product_template"/>
             <field name="type">ir.actions.server</field>
             <field name="state">code</field>
-            <field name="code">model.create_product_data</field>
+            <field name="code">model.create_product_data()</field>
             <field name="interval_number">1</field>
             <field name="interval_type">days</field>
             <field name="numbercall">-1</field>
@@ -20,7 +20,7 @@
             <field name="model_id" ref="model_product_template"/>
             <field name="type">ir.actions.server</field>
             <field name="state">code</field>
-            <field name="code">model.create_product_data</field>
+            <field name="code">model.create_product_data()</field>
             <field name="interval_number">1</field>
             <field name="interval_type">days</field>
             <field name="numbercall">-1</field>
@@ -34,7 +34,7 @@
             <field name="model_id" ref="model_product_template"/>
             <field name="type">ir.actions.server</field>
             <field name="state">code</field>
-            <field name="code">model.create_product_data</field>
+            <field name="code">model.create_product_data()</field>
             <field name="interval_number">1</field>
             <field name="interval_type">days</field>
             <field name="numbercall">-1</field>
