@@ -33,7 +33,7 @@ def move_files():
     myPassword = "54dLohN3"
     with pysftp.Connection(host=myHostname, username=myUsername, password=myPassword, cnopts=cnopts) as sftp:
         # path = get_module_resource('inventory_updates', 'static/src/')
-        module_path = '/home/fodilu/odoo13/custom/addons/inventory_updates/static/src/'
+        module_path = get_module_resource('inventory_updates', 'static/src/')
         remoteFilePaths = ['Price/prisfil.csv', 'Price/varefil.csv']
 
         localFilePaths = ['prisfil.csv', 'varefil.csv']
