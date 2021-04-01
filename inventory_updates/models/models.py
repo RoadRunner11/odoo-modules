@@ -128,5 +128,6 @@ class ProductTemplate(models.Model):
 
     @api.model
     def run_scheduler(self):
-        _logger.info('testing this out')
+        for _ in range(5):
+            _logger.info('testing this out')
         return {}
