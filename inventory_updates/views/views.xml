@@ -14,7 +14,7 @@
            <field name="price_per"/>
            <field name="producer"/>
            <field name="prod_type"/>
-           <field name="image_url"/>
+           <field name="imagelink"/>
         </xpath>
       </field>
     </record>
