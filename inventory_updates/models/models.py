@@ -124,3 +124,9 @@ class ProductTemplate(models.Model):
                 count2 += 1
                 
         _logger.info('Done')
+        return {}
+
+    @api.model
+    def run_scheduler(self):
+        _logger.info('testing this out')
+        return {}
