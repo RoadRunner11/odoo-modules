@@ -97,7 +97,7 @@ class ProductTemplate(models.Model):
                 data['originr'] = row[5]
                 data['producer'] = row[6]
                 data['prod_type'] = row[9]
-                data['limit'] = row[10]
+                data['limit'] = row[11]
                 data['ypakk'] = row[12]
                 data['group1'] = row[14]
                 data['group2'] = row[15]
