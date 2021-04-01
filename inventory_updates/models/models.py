@@ -86,8 +86,8 @@ class ProductTemplate(models.Model):
             count1 = 0
             count2 = 0
             for row in varefil_data:
-                if count1 >=200 :
-                    break
+                # if count1 >=200 :
+                #     break
                 data = {}
                 row = ''.join(row).split(';')
                 data['default_code'] = row[1]
@@ -110,18 +110,18 @@ class ProductTemplate(models.Model):
                         product.write(data)
                 else:
                     self.env['product.template'].create(data)
-                count1 += 1
+                # count1 += 1
 
             for row in prisfil_data:
-                if count2 >=200 :
-                    break
+                # if count2 >=200 :
+                #     break
                 default_code = row[0][7:12]
                 duplicates = self.search([('default_code', '=', default_code)])
                 if duplicates:
                     for product in duplicates:
                         product.write({'price': float(row[1])})
 
-                count2 += 1
+                # count2 += 1
                 
         _logger.info('Done')
         return {}
