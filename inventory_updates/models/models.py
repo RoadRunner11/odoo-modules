@@ -60,12 +60,17 @@ class ProductTemplate(models.Model):
     ]
     certifications_id = fields.Many2many(
         'inventory_updates.certifications', 'Certifications', help="Product certifications")
-    internal_id = fields.Char('Internal ID')
     producer = fields.Char('Producer')
     prod_type = fields.Char('Product Type')
     group1 = fields.Char('Group 1')
     group2 = fields.Char('Group 2')
     group3 = fields.Char('Group 3')
+    ipakn = fields.Char('IPAKN')
+    ypakk = fields.Char('YPAKK')
+    limit = fields.Char('LIMIT')
+    originr = fields.Char('ORIGINR')
+    price_per = fields.Char('PRICE PER')
+    imagelink =  fields.Char('IMAGE LINK')
 
     @api.model
     def create_product_data(self):
@@ -85,15 +90,21 @@ class ProductTemplate(models.Model):
                     break
                 data = {}
                 row = ''.join(row).split(';')
-                data['internal_id'] = row[1]
+                data['default_code'] = row[1]
                 data['name'] = row[2]
+                data['ipakn'] = row[3]
+                data['price_per'] = row[4]
+                data['originr'] = row[5]
                 data['producer'] = row[6]
                 data['prod_type'] = row[9]
+                data['limit'] = row[10]
+                data['ypakk'] = row[12]
                 data['group1'] = row[14]
                 data['group2'] = row[15]
                 data['group3'] = row[16]
                 data['description'] = row[17]
-                duplicates = self.search([('internal_id', '=', data['internal_id'])])
+                data['imagelink'] = row[27]
+                duplicates = self.search([('default_code', '=', data['default_code'])])
                 if duplicates:
                     for product in duplicates:
                         product.write(data)
@@ -104,8 +115,8 @@ class ProductTemplate(models.Model):
             for row in prisfil_data:
                 if count2 >=200 :
                     break
-                internal_id = row[0][7:12]
-                duplicates = self.search([('internal_id', '=', internal_id)])
+                default_code = row[0][7:12]
+                duplicates = self.search([('default_code', '=', default_code)])
                 if duplicates:
                     for product in duplicates:
                         product.write({'price': float(row[1])})

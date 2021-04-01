@@ -1,60 +1,22 @@
 <odoo>
   <data>
     <!-- explicit list view definition -->
-<!--
-    <record model="ir.ui.view" id="inventory_updates.list">
-      <field name="name">inventory_updates list</field>
-      <field name="model">inventory_updates.inventory_updates</field>
+    <record model="ir.ui.view" id="product_extend_view">
+      <field name="name">sale_extend form</field>
+      <field name="model">product.template</field>
+      <field name="inherit_id" ref="product.product_template_only_form_view"/>
       <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
-        </tree>
+        <xpath expr="//field[@name='barcode']" position="after">
+           <field name="ipakn"/>
+           <field name="ypakk"/>
+           <field name="limit"/>
+           <field name="originr"/>
+           <field name="price_per"/>
+           <field name="producer"/>
+           <field name="prod_type"/>
+           <field name="image_url"/>
+        </xpath>
       </field>
     </record>
--->
-
-    <!-- actions opening views on models -->
-<!--
-    <record model="ir.actions.act_window" id="inventory_updates.action_window">
-      <field name="name">inventory_updates window</field>
-      <field name="res_model">inventory_updates.inventory_updates</field>
-      <field name="view_mode">tree,form</field>
-    </record>
--->
-
-    <!-- server action to the one above -->
-<!--
-    <record model="ir.actions.server" id="inventory_updates.action_server">
-      <field name="name">inventory_updates server</field>
-      <field name="model_id" ref="model_inventory_updates_inventory_updates"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": model._name,
-        }
-      </field>
-    </record>
--->
-
-    <!-- Top menu item -->
-<!--
-    <menuitem name="inventory_updates" id="inventory_updates.menu_root"/>
--->
-    <!-- menu categories -->
-<!--
-    <menuitem name="Menu 1" id="inventory_updates.menu_1" parent="inventory_updates.menu_root"/>
-    <menuitem name="Menu 2" id="inventory_updates.menu_2" parent="inventory_updates.menu_root"/>
--->
-    <!-- actions -->
-<!--
-    <menuitem name="List" id="inventory_updates.menu_1_list" parent="inventory_updates.menu_1"
-              action="inventory_updates.action_window"/>
-    <menuitem name="Server to list" id="inventory_updates" parent="inventory_updates.menu_2"
-              action="inventory_updates.action_server"/>
--->
   </data>
 </odoo>
