@@ -107,7 +107,6 @@ class ProductTemplate(models.Model):
                         product.write(data)
                 else:
                     self.env['product.template'].create(data)
-                count1 += 1
 
             for row in prisfil_data:
                 default_code = row[0][7:12]
