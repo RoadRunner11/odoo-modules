@@ -87,8 +87,8 @@ class ProductTemplate(models.Model):
             count1 = 0
             count2 = 0
             for row in varefil_data:
-                if count1 >=200 :
-                    time.sleep(5)
+                if count1 >=1000 :
+                    break
                 data = {}
                 row = ''.join(row).split(';')
                 data['default_code'] = row[1]
@@ -114,8 +114,8 @@ class ProductTemplate(models.Model):
                 count1 += 1
 
             for row in prisfil_data:
-                if count2 >=200 :
-                    time.sleep(5)
+                if count2 >=1000 :
+                    break
                 default_code = row[0][7:12]
                 duplicates = self.search([('default_code', '=', default_code)])
                 if duplicates:
