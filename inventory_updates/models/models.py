@@ -94,7 +94,7 @@ class ProductTemplate(models.Model):
 					break
 				data = {}
 				row = ''.join(row).split(';')
-				data['type'] = 'storable'
+				data['type'] = 'product'
 				data['default_code'] = row[1]
 				data['name'] = row[2]
 				data['ipakn'] = row[3]
