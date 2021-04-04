@@ -89,6 +89,7 @@ class ProductTemplate(models.Model):
 			next(beholdinfg_data)
 			count1 = 0
 			count2 = 0
+			count3 = 0
 			for row in varefil_data:
 				if count1 >=10 :
 					break
@@ -136,7 +137,7 @@ class ProductTemplate(models.Model):
 				if duplicates:
 					for product in duplicates:
 						product.write({'qty_available': float(row[1])})
-				count2 += 1
+				count3 += 1
 				
 		_logger.info('Done')
 		return {}
