@@ -126,6 +126,17 @@ class ProductTemplate(models.Model):
 					for product in duplicates:
 						product.write({'price': float(row[1])})
 				count2 += 1
+
+			for row in beholdinfg_data:
+				if count3 >=10 :
+					break
+				row = ''.join(row).split(';')
+				default_code = row[0]
+				duplicates = self.search([('default_code', '=', default_code)])
+				if duplicates:
+					for product in duplicates:
+						product.write({'qty_available': float(row[1])})
+				count2 += 1
 				
 		_logger.info('Done')
 		return {}
