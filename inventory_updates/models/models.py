@@ -132,11 +132,26 @@ class ProductTemplate(models.Model):
 				if count3 >=10 :
 					break
 				row = ''.join(row).split(';')
+				product_id = 0
+				template_id = 0
 				default_code = row[0]
-				duplicates = self.search([('default_code', '=', default_code)])
-				if duplicates:
-					for product in duplicates:
-						product.write({'qty_available': float(row[1])})
+				product = self.env['product.product'].search([('default_code', '=', default_code)])
+				product_t = self.search([('default_code', '=', default_code)])
+				if product:
+					product_id = product.id 
+				if product_t:
+					template_id = product_t.id 
+				if product_id and template_id:
+					data = {'product_id':product_id, 'product_tmpl_id':template_id, 'new_quantity':float(row[1])}
+					change_qty = self.env['stock.change.product.qty']
+					move = self.env['stock.move']
+					p_move = move.search([('product_id', '=', product_id)])
+					if p_move:
+						pass
+					else:
+						new_qty = change_qty.create(data)
+						new_qty.change_product_qty()
+					
 				count3 += 1
 				
 		_logger.info('Done')
