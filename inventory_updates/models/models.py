@@ -142,13 +142,13 @@ class ProductTemplate(models.Model):
 				if product_t:
 					template_id = product_t.id 
 				if product_id and template_id:
-					data = {'product_id':product_id, 'product_tmpl_id':template_id, 'new_quantity':float(row[1])}
+					data = {'product_id':product_id, 'product_tmpl_id':template_id, 'new_quantity':abs(float(row[1]))}
 					change_qty = self.env['stock.change.product.qty']
 					move = self.env['stock.move']
 					p_move = move.search([('product_id', '=', product_id)])
 					if p_move:
 						# _logger.info('found {}'.format(product_id))
-						p_move.write({'product_uom_qty':float(row[1])})
+						p_move.write({'product_uom_qty':abs(float(row[1]))})
 					else:
 						# _logger.info('not found {}'.format(product_id))
 						new_qty = change_qty.create(data)
