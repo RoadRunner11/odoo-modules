@@ -150,6 +150,7 @@ class ProductTemplate(models.Model):
 						_logger.info('found {}'.format(product_id))
 						p_move.write({'product_uom_qty':float(row[1])})
 					else:
+						_logger.info('not found {}'.format(product_id))
 						new_qty = change_qty.create(data)
 						new_qty.change_product_qty()
 					
