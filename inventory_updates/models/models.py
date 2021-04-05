@@ -86,7 +86,7 @@ class ProductTemplate(models.Model):
 			beholdinfg_data = csv.reader(beholding)
 			next(prisfil_data)
 			next(varefil_data)
-			next(beholdinfg_data)
+			# next(beholdinfg_data)
 			count1 = 0
 			count2 = 0
 			count3 = 0
