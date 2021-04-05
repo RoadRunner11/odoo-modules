@@ -147,6 +147,7 @@ class ProductTemplate(models.Model):
 					move = self.env['stock.move']
 					p_move = move.search([('product_id', '=', product_id)])
 					if p_move:
+						_logger.info('found {}'.format(product_id))
 						p_move.write({'product_uom_qty':float(row[1])})
 					else:
 						new_qty = change_qty.create(data)
