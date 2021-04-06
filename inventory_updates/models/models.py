@@ -121,11 +121,12 @@ class ProductTemplate(models.Model):
 			for row in prisfil_data:
 				# if count2 >=10 :
 				# 	break
-				default_code = row[0][7:12]
+				row = ''.join(row[0]).split(';')
+				default_code = row[1]
 				duplicates = self.search([('default_code', '=', default_code)])
 				if duplicates:
 					for product in duplicates:
-						product.write({'price': float(row[1])})
+						product.write({'price': float(row[2])})
 				# count2 += 1
 
 			for row in beholdinfg_data:
