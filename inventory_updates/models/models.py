@@ -193,6 +193,6 @@ class ProductTemplate(models.Model):
 	def _compute_image(self):
 		for record in self:
 			image = None
-			if record.parner_image_url:
+			if record.imagelink:
 				image = self.load_image_from_url(record.imagelink)
 			record.update({'image': image, })
