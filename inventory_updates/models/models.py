@@ -16,8 +16,19 @@ import base64
 
 class CustomImage():
 	def load_image_from_url(self, url):
-		data = base64.b64encode(requests.get(url.strip()).content).replace(b'\n', b'')
-		return data
+		data = ''
+
+        try:
+            # Python 2
+            # data = requests.get(url.strip()).content.encode('base64').replace('\n', '')
+
+            # Python 3
+            data = base64.b64encode(requests.get(url.strip()).content).replace(b'\n', b'')
+        except Exception as e:
+            _logger.warn('There was a problem requesting the image from URL %s' % url)
+            logging.exception(e)
+
+        return data
 
 # class inventory_updates(models.Model):
 #     _name = 'inventory_updates.inventory_updates'
@@ -51,7 +62,7 @@ def move_files():
 			with open(module_path + localFilePaths[loc], 'wb') as out_file:
 				shutil.copyfileobj(file_instance, out_file)
 
-class Certification(models.Model):
+class Certification(models.Model, CustomImage):
 	_name = 'inventory_updates.certifications'
 	_description = 'inventory certifications'
 
@@ -82,6 +93,7 @@ class ProductTemplate(models.Model):
 	originr = fields.Char('ORIGINR')
 	price_per = fields.Char('PRICE PER')
 	imagelink =  fields.Char('IMAGE LINK')
+	image = fields.Binary(string='Image', compute='_compute_image', store=True, attachment=False)
 
 	@api.model
 	def create_product_data(self):
@@ -177,10 +189,10 @@ class ProductTemplate(models.Model):
 			_logger.info('testing this out')
 		return {}
 	
-	# @api.depends('imagelink')
-	# def _compute_image(self):
-    # 	for record in self:
-    #     	image = None
-    #     	if record.parner_image_url:
-    #         	image = self.load_image_from_url(record.imagelink)
-    #     	record.update({'image': image, })
+	@api.depends('imagelink')
+	def _compute_image(self):
+    	for record in self:
+        	image = None
+        	if record.parner_image_url:
+            	image = self.load_image_from_url(record.imagelink)
+        	record.update({'image': image, })
