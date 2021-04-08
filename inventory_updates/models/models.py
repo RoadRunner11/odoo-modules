@@ -10,6 +10,14 @@ import shutil
 from gevent import monkey
 
 _logger = logging.getLogger(__name__)
+import requests
+import base64
+
+
+class CustomImage():
+	def load_image_from_url(self, url):
+		data = base64.b64encode(requests.get(url.strip()).content).replace(b'\n', b'')
+		return data
 
 # class inventory_updates(models.Model):
 #     _name = 'inventory_updates.inventory_updates'
@@ -67,8 +75,10 @@ class ProductTemplate(models.Model):
 	group2 = fields.Char('Group 2')
 	group3 = fields.Char('Group 3')
 	ipakn = fields.Char('IPAKN')
+	ipakk = fields.Char('IPAKK')
 	ypakk = fields.Char('YPAKK')
-	limit = fields.Char('LIMIT')
+	pall = fields.Char('PALL')
+	# limit = fields.Char('LIMIT')
 	originr = fields.Char('ORIGINR')
 	price_per = fields.Char('PRICE PER')
 	imagelink =  fields.Char('IMAGE LINK')
@@ -87,9 +97,9 @@ class ProductTemplate(models.Model):
 			next(prisfil_data)
 			next(varefil_data)
 			# next(beholdinfg_data)
-			# count1 = 0
-			# count2 = 0
-			# count3 = 0
+			count1 = 0
+			count2 = 0
+			count3 = 0
 			for row in varefil_data:
 				# if count1 >=10 :
 				# 	break
@@ -103,8 +113,9 @@ class ProductTemplate(models.Model):
 				data['originr'] = row[5]
 				data['producer'] = row[6]
 				data['prod_type'] = row[9]
-				data['limit'] = row[11]
+				data['ipakk'] = row[11]
 				data['ypakk'] = row[12]
+				data['pall'] = row[13]
 				data['group1'] = row[14]
 				data['group2'] = row[15]
 				data['group3'] = row[16]
@@ -165,3 +176,11 @@ class ProductTemplate(models.Model):
 		for _ in range(5):
 			_logger.info('testing this out')
 		return {}
+	
+	# @api.depends('imagelink')
+	# def _compute_image(self):
+    # 	for record in self:
+    #     	image = None
+    #     	if record.parner_image_url:
+    #         	image = self.load_image_from_url(record.imagelink)
+    #     	record.update({'image': image, })
