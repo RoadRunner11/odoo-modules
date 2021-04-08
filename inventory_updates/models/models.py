@@ -93,7 +93,7 @@ class ProductTemplate(models.Model):
 	originr = fields.Char('ORIGINR')
 	price_per = fields.Char('PRICE PER')
 	imagelink =  fields.Char('IMAGE LINK')
-	# image = fields.Binary(string='Image', compute='_compute_image', store=True, attachment=False)
+	image = fields.Binary(string='Image', store=True, attachment=False)
 
 	@api.model
 	def create_product_data(self):
