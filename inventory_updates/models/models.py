@@ -62,7 +62,7 @@ def move_files():
 			with open(module_path + localFilePaths[loc], 'wb') as out_file:
 				shutil.copyfileobj(file_instance, out_file)
 
-class Certification(models.Model, CustomImage):
+class Certification(models.Model):
 	_name = 'inventory_updates.certifications'
 	_description = 'inventory certifications'
 
@@ -71,7 +71,7 @@ class Certification(models.Model, CustomImage):
 	image = fields.Binary()
 
 
-class ProductTemplate(models.Model):
+class ProductTemplate(models.Model, CustomImage):
 	_name = "product.template"
 	_inherit = "product.template"
 
@@ -93,7 +93,7 @@ class ProductTemplate(models.Model):
 	originr = fields.Char('ORIGINR')
 	price_per = fields.Char('PRICE PER')
 	imagelink =  fields.Char('IMAGE LINK')
-	image = fields.Binary(string='Image', store=True, attachment=False)
+	# image = fields.Binary(string='Image', store=True, attachment=False)
 
 	@api.model
 	def create_product_data(self):
@@ -133,7 +133,10 @@ class ProductTemplate(models.Model):
 				data['group3'] = row[16]
 				data['description'] = row[17]
 				data['imagelink'] = row[27]
-				data['image_1920'] = row[27]
+				if data['imagelink']:
+					image = self.load_image_from_url(data['imagelink'])
+					data['image_1920'] = image
+
 				duplicates = self.search([('default_code', '=', data['default_code'])])
 				if duplicates:
 					for product in duplicates:
