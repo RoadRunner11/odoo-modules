@@ -18,17 +18,17 @@ class CustomImage():
 	def load_image_from_url(self, url):
 		data = ''
 
-        try:
-            # Python 2
-            # data = requests.get(url.strip()).content.encode('base64').replace('\n', '')
+		try:
+			# Python 2
+			# data = requests.get(url.strip()).content.encode('base64').replace('\n', '')
 
-            # Python 3
-            data = base64.b64encode(requests.get(url.strip()).content).replace(b'\n', b'')
-        except Exception as e:
-            _logger.warn('There was a problem requesting the image from URL %s' % url)
-            logging.exception(e)
+			# Python 3
+			data = base64.b64encode(requests.get(url.strip()).content).replace(b'\n', b'')
+		except Exception as e:
+			_logger.warn('There was a problem requesting the image from URL %s' % url)
+			logging.exception(e)
 
-        return data
+		return data
 
 # class inventory_updates(models.Model):
 #     _name = 'inventory_updates.inventory_updates'
@@ -191,8 +191,8 @@ class ProductTemplate(models.Model):
 	
 	@api.depends('imagelink')
 	def _compute_image(self):
-    	for record in self:
-        	image = None
-        	if record.parner_image_url:
-            	image = self.load_image_from_url(record.imagelink)
-        	record.update({'image': image, })
+		for record in self:
+			image = None
+			if record.parner_image_url:
+				image = self.load_image_from_url(record.imagelink)
+			record.update({'image': image, })
