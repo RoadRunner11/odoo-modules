@@ -93,7 +93,7 @@ class ProductTemplate(models.Model):
 	originr = fields.Char('ORIGINR')
 	price_per = fields.Char('PRICE PER')
 	imagelink =  fields.Char('IMAGE LINK')
-	image = fields.Binary(string='Image', compute='_compute_image', store=True, attachment=False)
+	# image = fields.Binary(string='Image', compute='_compute_image', store=True, attachment=False)
 
 	@api.model
 	def create_product_data(self):
@@ -133,6 +133,7 @@ class ProductTemplate(models.Model):
 				data['group3'] = row[16]
 				data['description'] = row[17]
 				data['imagelink'] = row[27]
+				data['image_1920'] = row[27]
 				duplicates = self.search([('default_code', '=', data['default_code'])])
 				if duplicates:
 					for product in duplicates:
@@ -188,12 +189,12 @@ class ProductTemplate(models.Model):
 		for _ in range(5):
 			_logger.info('testing this out')
 		return {}
-		
-	@api.multi
-	@api.depends('imagelink')
-	def _compute_image(self):
-		for record in self:
-			image = None
-			if record.imagelink:
-				image = self.load_image_from_url(record.imagelink)
-			record.update({'image': image, })
+
+	# @api.multi
+	# @api.depends('imagelink')
+	# def _compute_image(self):
+	# 	for record in self:
+	# 		image = None
+	# 		if record.imagelink:
+	# 			image = self.load_image_from_url(record.imagelink)
+	# 		record.update({'image': image, })
