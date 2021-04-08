@@ -188,7 +188,8 @@ class ProductTemplate(models.Model):
 		for _ in range(5):
 			_logger.info('testing this out')
 		return {}
-	
+		
+	@api.multi
 	@api.depends('imagelink')
 	def _compute_image(self):
 		for record in self:
