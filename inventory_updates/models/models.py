@@ -101,8 +101,8 @@ class ProductTemplate(models.Model):
 			count2 = 0
 			count3 = 0
 			for row in varefil_data:
-				# if count1 >=10 :
-				# 	break
+				if count1 >=10 :
+					break
 				data = {}
 				row = ''.join(row).split(';')
 				data['type'] = 'product'
@@ -127,22 +127,22 @@ class ProductTemplate(models.Model):
 						product.write(data)
 				else:
 					self.env['product.template'].create(data)
-				# count1 += 1
+				count1 += 1
 
 			for row in prisfil_data:
-				# if count2 >=10 :
-				# 	break
+				if count2 >=10 :
+					break
 				row = ''.join(row[0]).split(';')
 				default_code = row[1]
 				duplicates = self.search([('default_code', '=', default_code)])
 				if duplicates:
 					for product in duplicates:
 						product.write({'price': float(row[2])})
-				# count2 += 1
+				count2 += 1
 
 			for row in beholdinfg_data:
-				# if count3 >=10 :
-				# 	break
+				if count3 >=10 :
+					break
 				row = ''.join(row).split(';')
 				product_id = 0
 				template_id = 0
@@ -166,7 +166,7 @@ class ProductTemplate(models.Model):
 						new_qty = change_qty.create(data)
 						new_qty.change_product_qty()
 					
-				# count3 += 1
+				count3 += 1
 				
 		_logger.info('Done')
 		return {}
