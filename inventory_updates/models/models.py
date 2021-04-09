@@ -93,6 +93,11 @@ class ProductTemplate(models.Model, CustomImage):
 	originr = fields.Char('ORIGINR')
 	price_per = fields.Char('PRICE PER')
 	imagelink =  fields.Char('IMAGE LINK')
+	enviroment1 = fields.Char('ENVIRONMENT ONE')
+	enviroment2 = fields.Char('ENVIRONMENT TWO')
+	enviroment3 = fields.Char('ENVIRONMENT THREE')
+	enviroment4 = fields.Char('ENVIRONMENT FOUR')
+	enviroment5 = fields.Char('ENVIRONMENT FIVE')
 	# image = fields.Binary(string='Image', store=True, attachment=False)
 
 	@api.model
@@ -133,6 +138,7 @@ class ProductTemplate(models.Model, CustomImage):
 				data['group3'] = row[16]
 				data['description'] = row[17]
 				data['imagelink'] = row[27]
+				data['price'] = float(0)
 				if data['imagelink']:
 					image = self.load_image_from_url(data['imagelink'])
 					data['image_1920'] = image
@@ -153,7 +159,7 @@ class ProductTemplate(models.Model, CustomImage):
 				duplicates = self.search([('default_code', '=', default_code)])
 				if duplicates:
 					for product in duplicates:
-						product.write({'price': float(row[2])})
+						product.write({'standard_price': float(row[2])})
 				count2 += 1
 
 			for row in beholdinfg_data:
