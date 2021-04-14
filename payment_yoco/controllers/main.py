@@ -17,7 +17,7 @@ class YocoController(http.Controller):
     def return_payment_values(self, **post):
         """ Upadate the payment values from the database"""
         acquirer_id = int(post.get('acquirer_id'))
-        acquirer = request.env['payment.acquirer'].browse(acquirer_id)
+        acquirer = request.env['payment.acquirer'].sudo().browse(acquirer_id)
         # values = acquirer.rave_form_generate_values(acquirer)
         return post
 
