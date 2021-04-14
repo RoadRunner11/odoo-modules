@@ -36,7 +36,7 @@ class PaymentTransactionYoco(models.Model):
 
     def _yoco_verify_charge(self, data):
         api_url_charge =  self.acquirer_id._get_yoco_api_url()
-        sec_key = request.env['payment.acquirer'].browse(data['acquirer_id']).yoco_sec_key
+        sec_key = request.env['payment.acquirer'].sudo().browse(data['acquirer_id']).yoco_sec_key
         payload = {
             'token': data['token'],
             'amountInCents': data['amount'],
