@@ -1,0 +1,63 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="manufacturing_specifications_tree">
+            <field name="name">Specifications</field>
+            <field name="model">manufacturing.specification</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                    <field name="material" />
+                    <field name="material_id" />
+                    <field name="part_no" />
+                    <field name="spec_version" />
+                    <field name="effective_date" />
+                    <field name="retest_period" />
+                    <field name="expiry_period" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="manufacturing_specifications_form" model="ir.ui.view">
+            <field name="name">Specifications</field>
+            <field name="model">manufacturing.specification</field>
+            <field name="arch" type="xml">
+                <form string="Specifications">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" />
+                                <field name="material" />
+                                <field name="material_id" />
+                                <field name="part_no" />
+                                <field name="spec_version" />
+                                <field name="effective_date" />
+                                <field name="retest_period" />
+                                <field name="expiry_period" />
+                                <field name="safety_instructions" />
+                                <field name="general_sampling" />
+                                <field name="attachment" filename="attached_file" />
+                                <field name="tests">
+                                    <tree editable="bottom">
+                                        <field name="name" />
+                                    </tree>
+                                </field>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- actions opening views on models -->
+
+        <record model="ir.actions.act_window" id="manufacturing_specifications_action_window">
+            <field name="name">Specifications</field>
+            <field name="res_model">manufacturing.specification</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="specifications_setup" name="Specifications" parent="manufacturing_setup" action="manufacturing_specifications_action_window" sequence="9" />
+
+    </data>
+</odoo>

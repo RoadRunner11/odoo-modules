@@ -1,0 +1,64 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="manufacturing_pending_receipt_tree">
+            <field name="name">Pending Receipts</field>
+            <field name="model">manufacturing.pending.receipt</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                    <field name="part_no" />
+                    <field name="material_name" />
+                    <field name="material_id" />
+                    <field name="version" />
+                    <field name="vendor_name" />
+                    <field name="vendor_part_no" />
+                    <field name="project" />
+                    <field name="requisition_no" />
+                    <field name="po_no" />
+                    <field name="qty_ord" />
+                    <field name="qty_rcv" />
+                    <field name="uom_id" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="manufacturing_pending_receipt_form" model="ir.ui.view">
+            <field name="name">Pending Receipts</field>
+            <field name="model">manufacturing.pending.receipt</field>
+            <field name="arch" type="xml">
+                <form string="Pending Receipts">
+                    <sheet>
+                        <group>
+                            <field name="part_no" invisible="1" />
+                            <field name="material_name" invisible="1" />
+                            <field name="material_id" invisible="1" />
+                            <field name="version" invisible="1" />
+                            <field name="vendor_name" invisible="1" />
+                            <field name="vendor_part_no" invisible="1" />
+                            <field name="project" invisible="1" />
+                            <field name="requisition_no" invisible="1" />
+                            <field name="po_no" invisible="1" />
+                            <field name="qty_ord" invisible="1" />
+                            <field name="qty_rcv" invisible="1" />
+                            <field name="uom_id" invisible="1" />
+                            <field name="upload_receipt_file_name" invisible="1" />
+                            <field name="receipt_upload" filename="upload_receipt_file_name" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- actions opening views on models -->
+
+        <record model="ir.actions.act_window" id="manufacturing_pending_receipt_action_window">
+            <field name="name">Pending Receipts</field>
+            <field name="res_model">manufacturing.pending.receipt</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="pending_receipts" name="Pending Receipts" parent="inventory_root" action="manufacturing_pending_receipt_action_window" sequence="20" />
+        
+    </data>
+</odoo>

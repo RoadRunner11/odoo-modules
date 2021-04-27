@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_material,manufacturing.material,model_manufacturing_material,base.group_user,1,1,1,1
+access_storage_condition,manufacturing.storage_condition,model_manufacturing_storage,base.group_user,1,1,1,1
+access_specification,manufacturing.specification,model_manufacturing_specification,base.group_user,1,1,1,1
+access_specification_test,manufacturing.specification_test,model_manufacturing_spec_test,base.group_user,1,1,1,1
+access_requisition,manufacturing.requisition,model_manufacturing_requisition,base.group_user,1,1,1,1
+access_project,manufacturing.project,model_manufacturing_project,base.group_user,1,1,1,1
+access_wip_fg_part_no,manufacturing.wip_fg_part_no,model_manufacturing_wip_fg_part_no,base.group_user,1,1,1,1
+access_material_requisition,manufacturing.material_requisition,model_manufacturing_mat_req,base.group_user,1,1,1,1
+access_pending_receipt,manufacturing.pending_receipt,model_manufacturing_pending_receipt,base.group_user,1,1,1,1
+access_inventory,manufacturing.inventory,model_manufacturing_inventory,base.group_user,1,1,1,1

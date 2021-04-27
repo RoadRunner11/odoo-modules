@@ -1,0 +1,41 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="manufacturing_storage_conditions_tree">
+            <field name="name">Storage Conditions</field>
+            <field name="model">manufacturing.storage</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="manufacturing_storage_conditions_form" model="ir.ui.view">
+            <field name="name">Storage Conditions</field>
+            <field name="model">manufacturing.storage</field>
+            <field name="arch" type="xml">
+                <form string="Storage Conditions">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- actions opening views on models -->
+
+        <record model="ir.actions.act_window" id="manufacturing_storage_conditions_action_window">
+            <field name="name">Storage Conditions</field>
+            <field name="res_model">manufacturing.storage</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="storage_conditions" name="Storage Conditions" parent="manufacturing_setup" action="manufacturing_storage_conditions_action_window" sequence="10" />
+
+    </data>
+</odoo>
