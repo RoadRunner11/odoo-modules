@@ -19,6 +19,11 @@
            <field name="producer"/>
            <field name="prod_type"/>
            <field name="imagelink"/>
+           <field name="enviroment1"/>
+           <field name="enviroment2"/>
+           <field name="enviroment3"/>
+           <field name="enviroment4"/>
+           <field name="enviroment5"/>
         </xpath>
       </field>
     </record>

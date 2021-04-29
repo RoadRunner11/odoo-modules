@@ -70,6 +70,15 @@ class Certification(models.Model):
 	description = fields.Text('Description')
 	image = fields.Binary()
 
+class ProductCategory(models.Model, CustomImage):
+	_name = "product.category"
+	_inherit = "product.category"
+	group_type = fields.Selection([
+        ('group1', 'Group 1'),
+        ('group2', 'Group 2'), 
+		('group3', 'Group 3')], string='Group Type', default='group3', required=True,
+        )
+	group_id = fields.Char('Group Id')
 
 class ProductTemplate(models.Model, CustomImage):
 	_name = "product.template"
