@@ -91,9 +91,9 @@ class ProductTemplate(models.Model, CustomImage):
 		'inventory_updates.certifications', 'Certifications', help="Product certifications")
 	producer = fields.Char('Producer')
 	prod_type = fields.Char('Product Type')
-	group1 = fields.Char('Group 1')
-	group2 = fields.Char('Group 2')
-	group3 = fields.Char('Group 3')
+	group1 = fields.Many2one('product.category', 'Parent Category', index=True, ondelete='cascade')
+	group2 = fields.Many2one('product.category', 'Parent Category', index=True, ondelete='cascade')
+	group3 = fields.Many2one('product.category', 'Parent Category', index=True, ondelete='cascade')
 	ipakn = fields.Char('IPAKN')
 	ipakk = fields.Char('IPAKK')
 	ypakk = fields.Char('YPAKK')
@@ -139,18 +139,25 @@ class ProductTemplate(models.Model, CustomImage):
 				data['originr'] = row[5]
 				data['producer'] = row[6]
 				data['prod_type'] = row[9]
-				data['ipakk'] = row[11]
-				data['ypakk'] = row[12]
-				data['pall'] = row[13]
-				data['group1'] = row[14]
-				data['group2'] = row[15]
-				data['group3'] = row[16]
-				data['description'] = row[17]
+				data['ipakk'] = row[12]
+				data['ypakk'] = row[13]
+				data['pall'] = row[14]
+				data['description'] = row[19]
 				data['imagelink'] = row[27]
 				data['price'] = float(0)
+				data['environment1'] = row[21]
+				data['environment2'] = row[22]
+				data['environment3'] = row[23]
+				data['environment4'] = row[24]
+				data['environment5'] = row[25]
 				if data['imagelink']:
 					image = self.load_image_from_url(data['imagelink'])
 					data['image_1920'] = image
+				if row[18]:
+					group3_id = self.env['product.category'].search([('name', '=', row[18])])
+					data['group1'] = group2_id.parent_id.parent_id
+					data['group2'] = group2_id.parent_id
+					data['group3'] = group2_id
 
 				duplicates = self.search([('default_code', '=', data['default_code'])])
 				if duplicates:
