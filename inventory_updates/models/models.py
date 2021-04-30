@@ -91,9 +91,9 @@ class ProductTemplate(models.Model, CustomImage):
 		'inventory_updates.certifications', 'Certifications', help="Product certifications")
 	producer = fields.Char('Producer')
 	prod_type = fields.Char('Product Type')
-	group1 = fields.Many2one('product.category', 'Parent Category', index=True, ondelete='cascade')
-	group2 = fields.Many2one('product.category', 'Parent Category', index=True, ondelete='cascade')
-	group3 = fields.Many2one('product.category', 'Parent Category', index=True, ondelete='cascade')
+	# group1 = fields.Many2one('product.category', 'Parent Category', index=True, ondelete='cascade')
+	# group2 = fields.Many2one('product.category', 'Parent Category', index=True, ondelete='cascade')
+	# group3 = fields.Many2one('product.category', 'Parent Category', index=True, ondelete='cascade')
 	ipakn = fields.Char('IPAKN')
 	ipakk = fields.Char('IPAKK')
 	ypakk = fields.Char('YPAKK')
@@ -155,9 +155,10 @@ class ProductTemplate(models.Model, CustomImage):
 					data['image_1920'] = image
 				if row[18]:
 					group3_id = self.env['product.category'].search([('name', '=', row[18])])
-					data['group1'] = group3_id.parent_id.parent_id
-					data['group2'] = group3_id.parent_id
-					data['group3'] = group3_id
+					data['categ_id'] = group3_id
+					# data['group1'] = group3_id.parent_id.parent_id
+					# data['group2'] = group3_id.parent_id
+					# data['group3'] = group3_id
 
 				duplicates = self.search([('default_code', '=', data['default_code'])])
 				if duplicates:

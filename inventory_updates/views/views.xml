@@ -11,9 +11,9 @@
            <field name="ipakk"/>
            <field name="ypakk"/>
            <field name="pall"/>
-           <field name="group1"/>
+           <!-- <field name="group1"/>
            <field name="group2"/>
-           <field name="group3"/>
+           <field name="group3"/> -->
            <field name="originr"/>
            <field name="price_per"/>
            <field name="producer"/>
