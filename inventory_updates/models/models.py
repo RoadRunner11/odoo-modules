@@ -102,11 +102,11 @@ class ProductTemplate(models.Model, CustomImage):
 	originr = fields.Char('ORIGINR')
 	price_per = fields.Char('PRICE PER')
 	imagelink =  fields.Char('IMAGE LINK')
-	enviroment1 = fields.Char('ENVIRONMENT ONE')
-	enviroment2 = fields.Char('ENVIRONMENT TWO')
-	enviroment3 = fields.Char('ENVIRONMENT THREE')
-	enviroment4 = fields.Char('ENVIRONMENT FOUR')
-	enviroment5 = fields.Char('ENVIRONMENT FIVE')
+	environment1 = fields.Char('ENVIRONMENT ONE')
+	environment2 = fields.Char('ENVIRONMENT TWO')
+	environment3 = fields.Char('ENVIRONMENT THREE')
+	environment4 = fields.Char('ENVIRONMENT FOUR')
+	environment5 = fields.Char('ENVIRONMENT FIVE')
 	# image = fields.Binary(string='Image', store=True, attachment=False)
 
 	@api.model
