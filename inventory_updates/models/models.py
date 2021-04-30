@@ -155,9 +155,9 @@ class ProductTemplate(models.Model, CustomImage):
 					data['image_1920'] = image
 				if row[18]:
 					group3_id = self.env['product.category'].search([('name', '=', row[18])])
-					data['group1'] = group2_id.parent_id.parent_id
-					data['group2'] = group2_id.parent_id
-					data['group3'] = group2_id
+					data['group1'] = group3_id.parent_id.parent_id
+					data['group2'] = group3_id.parent_id
+					data['group3'] = group3_id
 
 				duplicates = self.search([('default_code', '=', data['default_code'])])
 				if duplicates:
