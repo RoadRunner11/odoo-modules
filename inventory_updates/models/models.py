@@ -102,11 +102,11 @@ class ProductTemplate(models.Model, CustomImage):
 	originr = fields.Char('ORIGINR')
 	price_per = fields.Char('PRICE PER')
 	imagelink =  fields.Char('IMAGE LINK')
-	environment1 = fields.Char('ENVIRONMENT ONE')
-	environment2 = fields.Char('ENVIRONMENT TWO')
-	environment3 = fields.Char('ENVIRONMENT THREE')
-	environment4 = fields.Char('ENVIRONMENT FOUR')
-	environment5 = fields.Char('ENVIRONMENT FIVE')
+	miljo1 = fields.Char('Miljo One')
+	miljo2 = fields.Char('Miljo Two')
+	miljo2 = fields.Char('Miljo Three')
+	miljo4 = fields.Char('Miljo Four')
+	miljo5 = fields.Char('Miljo Five')
 	# image = fields.Binary(string='Image', store=True, attachment=False)
 
 	@api.model
@@ -145,11 +145,11 @@ class ProductTemplate(models.Model, CustomImage):
 				data['description'] = row[19]
 				data['imagelink'] = row[27]
 				data['price'] = float(0)
-				data['environment1'] = row[21]
-				data['environment2'] = row[22]
-				data['environment3'] = row[23]
-				data['environment4'] = row[24]
-				data['environment5'] = row[25]
+				data['miljo1'] = row[21]
+				data['miljo2'] = row[22]
+				data['miljo3'] = row[23]
+				data['miljo4'] = row[24]
+				data['miljo5'] = row[25]
 				if data['imagelink']:
 					image = self.load_image_from_url(data['imagelink'])
 					data['image_1920'] = image
