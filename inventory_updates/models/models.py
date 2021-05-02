@@ -104,7 +104,7 @@ class ProductTemplate(models.Model, CustomImage):
 	imagelink =  fields.Char('IMAGE LINK')
 	miljo1 = fields.Char('Miljo One')
 	miljo2 = fields.Char('Miljo Two')
-	miljo2 = fields.Char('Miljo Three')
+	miljo3 = fields.Char('Miljo Three')
 	miljo4 = fields.Char('Miljo Four')
 	miljo5 = fields.Char('Miljo Five')
 	# image = fields.Binary(string='Image', store=True, attachment=False)
