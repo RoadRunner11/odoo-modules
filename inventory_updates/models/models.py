@@ -156,7 +156,7 @@ class ProductTemplate(models.Model, CustomImage):
 				if row[18]:
 					group3_id = self.env['product.category'].search([('name', '=', row[18])])
 					if group3_id:
-						data['categ_id'] = group3_id
+						data['categ_id'] = group3_id[0]
 					# data['group1'] = group3_id.parent_id.parent_id
 					# data['group2'] = group3_id.parent_id
 					# data['group3'] = group3_id
