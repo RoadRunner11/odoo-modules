@@ -44,7 +44,7 @@ class CustomImage():
 #         for record in self:
 #             record.value2 = float(record.value) / 100
 def move_files():
-	# monkey.patch_all()
+	monkey.patch_all()
 	cnopts = pysftp.CnOpts()
 	cnopts.hostkeys = None
 
