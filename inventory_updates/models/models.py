@@ -154,14 +154,14 @@ class ProductTemplate(models.Model, CustomImage):
 					image = self.load_image_from_url(data['imagelink'])
 					data['image_1920'] = image
 				if row[18]:
-					group3_id = self.env['product.category'].search([('name', '=', row[18].strip())])
+					group3_id = self.env['product.category'].search([('name', 'like', row[18].strip())])
 					if group3_id:
 						data['categ_id'] = group3_id[0]
 					# data['group1'] = group3_id.parent_id.parent_id
 					# data['group2'] = group3_id.parent_id
 					# data['group3'] = group3_id
 
-				duplicates = self.search([('default_code', 'like', data['default_code'])])
+				duplicates = self.search([('default_code', '=', data['default_code'])])
 				if duplicates:
 					for product in duplicates:
 						product.write(data)
