@@ -19,11 +19,11 @@
            <field name="producer"/>
            <field name="prod_type"/>
            <field name="imagelink"/>
-           <field name="miljo1"/>
-           <field name="miljo2"/>
-           <field name="miljo3"/>
-           <field name="miljo4"/>
-           <field name="miljo5"/>
+           <field name="miljø1"/>
+           <field name="miljø2"/>
+           <field name="miljø3"/>
+           <field name="miljø4"/>
+           <field name="miljø5"/>
         </xpath>
       </field>
     </record>
