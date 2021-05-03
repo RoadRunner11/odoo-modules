@@ -127,8 +127,8 @@ class ProductTemplate(models.Model, CustomImage):
 			count2 = 0
 			count3 = 0
 			for row in varefil_data:
-				# if count1 >=10 :
-				# 	break
+				if count1 >=10 :
+					break
 				data = {}
 				row = ''.join(row).split(';')
 				data['type'] = 'product'
@@ -154,35 +154,35 @@ class ProductTemplate(models.Model, CustomImage):
 					image = self.load_image_from_url(data['imagelink'])
 					data['image_1920'] = image
 				if row[18]:
-					group3_id = self.env['product.category'].search([('name', '=', row[18])])
+					group3_id = self.env['product.category'].search([('name', '=', row[18].strip())])
 					if group3_id:
 						data['categ_id'] = group3_id[0]
 					# data['group1'] = group3_id.parent_id.parent_id
 					# data['group2'] = group3_id.parent_id
 					# data['group3'] = group3_id
 
-				duplicates = self.search([('default_code', '=', data['default_code'])])
+				duplicates = self.search([('default_code', 'like', data['default_code'])])
 				if duplicates:
 					for product in duplicates:
 						product.write(data)
 				else:
 					self.env['product.template'].create(data)
-				# count1 += 1
+				count1 += 1
 
 			for row in prisfil_data:
-				# if count2 >=10 :
-				# 	break
+				if count2 >=10 :
+					break
 				row = ''.join(row[0]).split(';')
 				default_code = row[1]
 				duplicates = self.search([('default_code', '=', default_code)])
 				if duplicates:
 					for product in duplicates:
 						product.write({'standard_price': float(row[2])})
-				# count2 += 1
+				count2 += 1
 
 			for row in beholdinfg_data:
-				# if count3 >=10 :
-				# 	break
+				if count3 >=10 :
+					break
 				row = ''.join(row).split(';')
 				product_id = 0
 				template_id = 0
@@ -206,7 +206,7 @@ class ProductTemplate(models.Model, CustomImage):
 						new_qty = change_qty.create(data)
 						new_qty.change_product_qty()
 					
-				# count3 += 1
+				count3 += 1
 				
 		_logger.info('Done')
 		return {}
