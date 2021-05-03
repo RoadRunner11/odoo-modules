@@ -167,6 +167,7 @@ class ProductTemplate(models.Model, CustomImage):
 						product.write(data)
 				else:
 					self.env['product.template'].create(data)
+				_logger.info(data)
 				count1 += 1
 
 			for row in prisfil_data:
