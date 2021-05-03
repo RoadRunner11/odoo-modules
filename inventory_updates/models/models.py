@@ -74,10 +74,10 @@ class ProductCategory(models.Model, CustomImage):
 	_name = "product.category"
 	_inherit = "product.category"
 	group_type = fields.Selection([
-        ('group1', 'Group 1'),
-        ('group2', 'Group 2'), 
+		('group1', 'Group 1'),
+		('group2', 'Group 2'), 
 		('group3', 'Group 3')], string='Group Type', default='group3', required=True,
-        )
+		)
 	group_id = fields.Char('Group Id')
 
 class ProductTemplate(models.Model, CustomImage):
@@ -139,9 +139,9 @@ class ProductTemplate(models.Model, CustomImage):
 				data['originr'] = row[5]
 				data['producer'] = row[6]
 				data['prod_type'] = row[9]
-				data['ipakk'] = row[12]
-				data['ypakk'] = row[13]
-				data['pall'] = row[14]
+				data['ipakk'] = row[11]
+				data['ypakk'] = row[12]
+				data['pall'] = row[13]
 				data['description'] = row[19]
 				data['imagelink'] = row[27]
 				data['price'] = float(0)
