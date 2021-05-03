@@ -118,7 +118,7 @@ class ProductTemplate(models.Model, CustomImage):
 		beholding_path = module_path + 'beholdning300.csv'
 		with open(prisfil_path, 'r') as prisfil, open(varefil_path, 'r') as varefil, open(beholding_path, 'r') as beholding:
 			prisfil_data = csv.reader(prisfil, escapechar= '\t')
-			varefil_data = csv.reader(varefil)
+			varefil_data = csv.reader(varefil, delimiter= ';')
 			beholdinfg_data = csv.reader(beholding)
 			next(prisfil_data)
 			next(varefil_data)
@@ -130,7 +130,7 @@ class ProductTemplate(models.Model, CustomImage):
 				if count1 >=10 :
 					break
 				data = {}
-				row = ''.join(row).split(';')
+				# row = ''.join(row).split(';')
 				data['type'] = 'product'
 				data['default_code'] = row[1]
 				data['name'] = row[2]
