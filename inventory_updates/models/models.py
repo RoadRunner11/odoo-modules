@@ -155,6 +155,7 @@ class ProductTemplate(models.Model, CustomImage):
 					data['image_1920'] = image
 				if row[18]:
 					group3_id = self.env['product.category'].search([('name', 'like', row[18].strip())])
+					_logger.info(group3_id)
 					if group3_id:
 						data['categ_id'] = group3_id[0]
 					# data['group1'] = group3_id.parent_id.parent_id
