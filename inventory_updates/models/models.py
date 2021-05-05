@@ -178,7 +178,10 @@ class ProductTemplate(models.Model, CustomImage):
 				duplicates = self.search([('default_code', '=', default_code)])
 				if duplicates:
 					for product in duplicates:
-						product.write({'standard_price': float(row[2])})
+						try:
+							product.write({'standard_price': float(row[2])})
+						except:
+							product.write({'standard_price': float(0)})
 				# count2 += 1
 
 			for row in beholdinfg_data:
